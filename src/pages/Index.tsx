@@ -1,12 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import Hero from "@/components/Hero";
+import ProblemStatement from "@/components/ProblemStatement";
+import HowItWorks from "@/components/HowItWorks";
+import FeaturesGrid from "@/components/FeaturesGrid";
+import RiskPatterns from "@/components/RiskPatterns";
+import SocialProof from "@/components/SocialProof";
+import Pricing from "@/components/Pricing";
+import Waitlist from "@/components/Waitlist";
 
 const Index = () => {
+  useEffect(() => {
+    // Set dark mode by default
+    document.documentElement.classList.add('dark');
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero />
+      <ProblemStatement />
+      <HowItWorks />
+      <FeaturesGrid />
+      <RiskPatterns />
+      <SocialProof />
+      <Pricing />
+      <Waitlist />
+      
+      {/* Footer */}
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-2xl font-bold text-gradient">Inkog</div>
+            <div className="text-sm text-muted-foreground">
+              © 2025 Inkog. Ship AI agents without fear.
+            </div>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+              <a href="#" className="hover:text-accent transition-colors">Terms</a>
+              <a href="#" className="hover:text-accent transition-colors">Docs</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
