@@ -29,14 +29,14 @@ const Index = () => {
       <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-2xl font-bold text-gradient">Inkog</div>
+            <div className="text-xl font-bold">Inkog</div>
             <div className="text-sm text-muted-foreground">
               © 2025 Inkog. Ship AI agents without fear.
             </div>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:text-accent transition-colors">Privacy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms</a>
-              <a href="#" className="hover:text-accent transition-colors">Docs</a>
+            <div className="flex gap-6 text-sm text-muted-foreground">
+              <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
+              <a href="#" className="hover:text-foreground transition-colors">Terms</a>
+              <a href="#" className="hover:text-foreground transition-colors">Docs</a>
             </div>
           </div>
         </div>

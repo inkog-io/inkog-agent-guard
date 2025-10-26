@@ -36,46 +36,36 @@ const features = [
 
 const FeaturesGrid = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 gradient-mesh opacity-20" />
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 md:py-32">
+      <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
             Enterprise-Grade Security Features
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             From the team that discovered critical vulnerabilities in major AI systems
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group bg-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-all hover:glow-accent cursor-pointer"
+              className="bg-card border border-border rounded-lg p-6 hover-lift"
             >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors"
-              >
-                <feature.icon className="w-7 h-7 text-accent" />
-              </motion.div>
+              <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center mb-4">
+                <feature.icon className="w-5 h-5 text-foreground" />
+              </div>
               
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </motion.div>
+              <h3 className="text-base font-bold mb-2">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground">{feature.description}</p>
+            </div>
           ))}
         </div>
       </div>

@@ -41,9 +41,6 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    --gradient-start: 231 45% 11%;
-    --gradient-mid: 260 50% 30%;
-    --gradient-end: 191 100% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -87,9 +84,6 @@ All colors MUST be HSL.
     --input: 231 35% 22%;
     --ring: 191 100% 50%;
 
-    --gradient-start: 231 45% 8%;
-    --gradient-mid: 260 50% 20%;
-    --gradient-end: 270 60% 25%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -119,22 +113,11 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .gradient-mesh {
-    background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)) 100%);
+  .hover-lift {
+    transition: transform 0.2s ease;
   }
 
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--warning)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glow-accent {
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
-  }
-
-  .glow-warning {
-    box-shadow: 0 0 20px hsl(var(--warning) / 0.3);
+  .hover-lift:hover {
+    transform: translateY(-2px);
   }
 }
