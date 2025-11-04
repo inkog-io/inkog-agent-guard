@@ -52,7 +52,13 @@ const Hero = () => {
                 <Github className="w-4 h-4" />
                 Install GitHub Action
               </Button>
+              <Button size="lg" variant="outline" className="text-base gap-2">
+                Book Risk Assessment
+              </Button>
             </div>
+            <p className="text-xs text-muted-foreground mb-16">
+              Free 15-minute consultation • First 10 companies only
+            </p>
           </motion.div>
 
           {/* Code snippet */}
