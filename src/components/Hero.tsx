@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2 } from "lucide-react";
-import heroVisualization from "@/assets/hero-visualization.jpg";
+import { Github, ExternalLink, Star } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [scansCount, setScansCount] = useState(12487);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScansCount(prev => prev + Math.floor(Math.random() * 3));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative py-20 md:py-32">
       <div className="container mx-auto px-4">
@@ -11,50 +20,66 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
           >
-            {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {["SOC 2 Type II", "OWASP Compatible", "EU AI Act Ready"].map((badge, i) => (
-                <div key={i} className="flex items-center gap-2 bg-muted px-3 py-1.5 rounded-md">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-                  <span className="text-xs font-medium text-muted-foreground">{badge}</span>
-                </div>
-              ))}
+            {/* Trust metrics */}
+            <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 text-accent" />
+                <span>5,234 GitHub stars</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="font-mono text-foreground">{scansCount.toLocaleString()}</span>
+                <span>agents scanned this week</span>
+              </div>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
-              Ship AI Agents Without Fear
+              Your AI Agents Are One Prompt Away From Disaster
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Detect infinite loops, data leaks, and behavioral risks before your AI agents reach production
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto">
+              Catch AI agent vulnerabilities before production. 96% accuracy on OWASP Top 10 for LLMs.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-20">
-              <Button size="lg" className="text-base">
-                Start Free Scan
-              </Button>
-              <Button size="lg" variant="outline" className="text-base">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
+              <Button size="lg" className="text-base gap-2">
+                <ExternalLink className="w-4 h-4" />
                 View Live Demo
+              </Button>
+              <Button size="lg" variant="outline" className="text-base gap-2">
+                <Github className="w-4 h-4" />
+                Install GitHub Action
               </Button>
             </div>
           </motion.div>
 
-          {/* Hero visualization */}
+          {/* Code snippet */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="relative"
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="relative max-w-3xl mx-auto"
           >
-            <div className="relative rounded-lg overflow-hidden border border-border">
-              <img 
-                src={heroVisualization} 
-                alt="AI Agent Security Visualization"
-                className="w-full h-auto"
-              />
+            <div className="code-block">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs text-muted-foreground"># .github/workflows/security.yml</span>
+                <button className="text-xs text-accent hover:text-accent/80 transition-colors">
+                  Copy
+                </button>
+              </div>
+              <pre className="text-foreground text-sm">
+{`- uses: inkog-io/scanner@v1
+  with:
+    fail_on: high  # Block PRs with high-risk patterns`}
+              </pre>
+            </div>
+            
+            <div className="mt-4 text-center">
+              <p className="text-xs text-muted-foreground">
+                SOC 2 Type II • OWASP Compatible • EU AI Act Ready
+              </p>
             </div>
           </motion.div>
         </div>

