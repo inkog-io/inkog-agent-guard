@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
+import { useState } from "react";
+import Cal, { getCalApi } from "@calcom/embed-react";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -17,30 +17,29 @@ export default function BookCta({
   variant = "default",
   className,
 }: Props) {
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi();
-      cal("ui", {
-        layout: "month_view",
-        hideEventTypeDetails: false,
-      });
-    })();
-  }, []);
-
+  const [isOpen, setIsOpen] = useState(false);
   const calLink = `ben/15min?${utm}`;
 
   return (
-    <Button
-      size={size}
-      variant={variant}
-      className={className}
-      aria-label="Schedule a 15-minute intro call"
-      data-cal-namespace="inkog15"
-      data-cal-link={calLink}
-      data-cal-origin="https://meet.inkog.io"
-      data-cal-config='{"layout":"month_view"}'
-    >
-      {text}
-    </Button>
+    <>
+      <Button
+        size={size}
+        variant={variant}
+        className={className}
+        aria-label="Schedule a 15-minute intro call"
+        onClick={() => setIsOpen(true)}
+      >
+        {text}
+      </Button>
+      
+      <Cal
+        namespace="inkog15"
+        calLink={calLink}
+        config={{
+          layout: "month_view",
+        }}
+        embedJsUrl="https://meet.inkog.io/embed/embed.js"
+      />
+    </>
   );
 }
