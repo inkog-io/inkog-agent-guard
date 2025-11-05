@@ -33,7 +33,6 @@ export default function BookCta({
       </Button>
       
       <Cal
-        namespace="inkog15"
         calLink={calLink}
         config={{
           layout: "month_view",
