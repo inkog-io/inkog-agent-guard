@@ -31,24 +31,24 @@ const SocialProof = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <a 
-                href="https://github.com/inkog-io/scanner" 
+                href="https://github.com/inkog-io/inkog" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-accent hover:underline"
+                className="flex items-center gap-2 text-primary hover:underline"
               >
                 <ExternalLink className="w-4 h-4" />
                 View on GitHub
               </a>
               <a 
                 href="#" 
-                className="flex items-center gap-2 text-accent hover:underline"
+                className="flex items-center gap-2 text-primary hover:underline"
               >
                 <ExternalLink className="w-4 h-4" />
                 Read Technical Blog
               </a>
               <a 
                 href="#" 
-                className="flex items-center gap-2 text-accent hover:underline"
+                className="flex items-center gap-2 text-primary hover:underline"
               >
                 <ExternalLink className="w-4 h-4" />
                 View Documentation

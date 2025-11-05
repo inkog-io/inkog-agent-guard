@@ -41,7 +41,7 @@ const Index = () => {
                 </p>
                 <div className="flex items-center gap-2">
                   <a 
-                    href="https://github.com/inkog-io/scanner" 
+                    href="https://github.com/inkog-io/inkog" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm bg-card border border-border rounded-lg px-3 py-2 hover:border-primary/50 transition-colors"

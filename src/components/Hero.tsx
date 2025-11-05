@@ -26,7 +26,7 @@ const Hero = () => {
             {/* Trust metrics */}
             <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-accent" />
+                <Star className="w-4 h-4 text-primary" />
                 <span>5,234 GitHub stars</span>
               </div>
               <div className="flex items-center gap-1">
@@ -48,11 +48,29 @@ const Hero = () => {
                 <ExternalLink className="w-4 h-4" />
                 View Live Demo
               </Button>
-              <Button size="lg" variant="outline" className="text-base gap-2">
-                <Github className="w-4 h-4" />
-                Install GitHub Action
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-base gap-2"
+                asChild
+              >
+                <a 
+                  href="https://github.com/inkog-io/inkog" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-4 h-4" />
+                  Star on GitHub
+                </a>
               </Button>
-              <Button size="lg" variant="outline" className="text-base gap-2">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-base gap-2"
+                data-cal-namespace=""
+                data-cal-link="ben/15min"
+                data-cal-config='{"layout":"month_view"}'
+              >
                 Book Risk Assessment
               </Button>
             </div>
@@ -71,7 +89,7 @@ const Hero = () => {
             <div className="code-block">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs text-muted-foreground"># .github/workflows/security.yml</span>
-                <button className="text-xs text-accent hover:text-accent/80 transition-colors">
+                <button className="text-xs text-primary hover:text-primary/80 transition-colors">
                   Copy
                 </button>
               </div>

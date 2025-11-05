@@ -44,9 +44,9 @@ const Waitlist = () => {
             </div>
 
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <Star className="w-4 h-4 text-accent" />
+              <Star className="w-4 h-4 text-primary" />
               <a 
-                href="https://github.com/inkog-io/scanner" 
+                href="https://github.com/inkog-io/inkog" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors"
@@ -59,9 +59,9 @@ const Waitlist = () => {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-8 p-4 bg-accent/10 border border-accent rounded-lg"
+                className="mt-8 p-4 bg-primary/10 border border-primary rounded-lg"
               >
-                <p className="text-sm text-accent">
+                <p className="text-sm text-primary">
                   Thanks! Check your inbox for setup instructions.
                 </p>
               </motion.div>
