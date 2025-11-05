@@ -1,9 +1,19 @@
 import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 
 const Book = () => {
   useEffect(() => {
     // Set dark mode by default
     document.documentElement.classList.add('dark');
+    
+    // Initialize Cal.com inline embed
+    (async () => {
+      const cal = await getCalApi();
+      cal("inline", {
+        elementOrSelector: "#cal-inline",
+        calLink: "ben/15min?utm_source=website&utm_medium=inline",
+      });
+    })();
   }, []);
 
   return (
@@ -39,15 +49,7 @@ const Book = () => {
             </div>
 
             {/* Cal.com Inline Embed */}
-            <div className="bg-card border border-border rounded-lg p-8">
-              <div 
-                className="cal-inline"
-                data-cal-namespace=""
-                data-cal-link="ben/15min"
-                data-cal-config='{"layout":"month_view"}'
-                style={{ width: "100%", height: "100%", overflow: "scroll" }}
-              />
-            </div>
+            <div id="cal-inline" className="min-h-[760px] rounded-lg border border-border" />
           </div>
         </div>
       </section>

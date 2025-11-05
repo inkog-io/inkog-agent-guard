@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Star } from "lucide-react";
 import { useEffect, useState } from "react";
+import BookCta from "@/components/BookCta";
 
 const Hero = () => {
   const [scansCount, setScansCount] = useState(12487);
@@ -63,16 +64,11 @@ const Hero = () => {
                   Star on GitHub
                 </a>
               </Button>
-              <Button 
-                size="lg" 
+              <BookCta 
                 variant="outline" 
                 className="text-base gap-2"
-                data-cal-namespace=""
-                data-cal-link="ben/15min"
-                data-cal-config='{"layout":"month_view"}'
-              >
-                Book Risk Assessment
-              </Button>
+                utm="utm_source=website&utm_medium=hero&utm_campaign=home"
+              />
             </div>
             <p className="text-xs text-muted-foreground mb-16">
               Free 15-minute consultation • First 10 companies only
