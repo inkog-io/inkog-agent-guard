@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import WhatWeCatch from "@/components/WhatWeCatch";
+import SupportAgentDemo from "@/components/SupportAgentDemo";
 import TechStack from "@/components/TechStack";
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Hero />
       <WhatWeCatch />
+      <SupportAgentDemo />
       <TechStack />
       
       {/* Footer */}
@@ -32,12 +34,12 @@ const Index = () => {
                 GitHub
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                Blog
+                About
               </a>
             </div>
             
             <p className="text-sm text-muted-foreground">
-              Prevent the next LangChain CVE
+              inkog
             </p>
           </div>
         </div>

@@ -20,7 +20,9 @@ const WhatWeCatch = () => {
   return (
     <section className="py-24 px-4">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-medium text-center mb-16">What We Catch</h2>
+        <h2 className="text-3xl font-medium text-center mb-16">
+          <span className="text-primary">Inkog</span> Supports more than 70+ patterns, including:
+        </h2>
         
         <div className="grid md:grid-cols-3 gap-8">
           {patterns.map((pattern, index) => (

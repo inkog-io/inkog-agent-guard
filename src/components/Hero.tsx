@@ -11,14 +11,14 @@ const Hero = () => {
             Static Analysis for AI Agents
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Catch prompt injection, infinite loops, and data leaks before production.
+            Catch prompt injection, infinite loops, data leaks and more <span className="font-semibold text-foreground">before production</span>.
           </p>
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
-            variant="default" 
+            variant="outline" 
             size="lg"
             className="w-full sm:w-auto"
           >
