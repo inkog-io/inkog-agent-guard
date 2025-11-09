@@ -1,18 +1,18 @@
 const patterns = [
   {
     name: "Prompt Injection",
-    cve: "CVE-2023-44467",
-    description: "Remote code execution via untrusted input in prompts",
+    example: 'prompt = f"Help: {user_input}"',
+    description: "User input directly controls system prompts without validation",
   },
   {
     name: "Infinite Loops",
-    incident: "$50K/month bills",
-    description: "Unbounded retry logic without exit conditions",
+    example: "while not resolved:\n    llm.complete()",
+    description: "Unbounded retry logic without exit conditions or max attempts",
   },
   {
     name: "API Keys in Code",
-    incident: "Training data leaks",
-    description: "Hardcoded credentials exposed in agent code",
+    example: 'key = "sk-proj-abc123..."',
+    description: "Hardcoded credentials exposed in logs, Git history, and training data",
   },
 ];
 
@@ -28,14 +28,13 @@ const WhatWeCatch = () => {
           {patterns.map((pattern, index) => (
             <div 
               key={index}
-              className="border border-border rounded-lg p-6 space-y-3"
+              className="border border-border rounded-lg p-6 space-y-4 hover:border-primary/50 transition-colors"
             >
-              <div className="flex items-baseline gap-2">
-                <h3 className="text-lg font-medium">{pattern.name}</h3>
-                <span className="text-xs text-muted-foreground">→</span>
-                <span className="text-xs font-mono text-destructive">
-                  {pattern.cve || pattern.incident}
-                </span>
+              <h3 className="text-lg font-medium">{pattern.name}</h3>
+              <div className="bg-muted/50 rounded p-3 border border-border">
+                <code className="font-mono text-xs text-warning whitespace-pre-wrap break-all">
+                  {pattern.example}
+                </code>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {pattern.description}

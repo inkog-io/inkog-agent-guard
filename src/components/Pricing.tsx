@@ -1,12 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const tiers = [
   {
@@ -29,15 +23,13 @@ const tiers = [
     period: "/month per production agent",
     description: "Everything in Open Source",
     features: [
-      "1 Agentic Framework Integration*",
       "SaaS + Admin GUI Available",
       "Priority support",
       "API access",
       "90-day history"
     ],
     cta: "Start Free Trial",
-    popular: true,
-    tooltip: "Agentic Framework Integration to LangChain, CrewAI, AutoGen, etc."
+    popular: true
   },
   {
     name: "Enterprise",
@@ -45,15 +37,13 @@ const tiers = [
     period: "",
     description: "Everything in Team",
     features: [
-      "3 Agentic Framework Integrations*",
       "Custom patterns",
       "On-premise deployment",
       "Support SLA + Success Manager",
       "Automatic Compliance reports"
     ],
     cta: "Contact Sales",
-    popular: false,
-    tooltip: "Agentic Framework Integration to LangChain, CrewAI, AutoGen, etc."
+    popular: false
   }
 ];
 
@@ -82,7 +72,7 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`bg-card rounded-lg p-6 border ${
+              className={`bg-card rounded-lg p-6 border flex flex-col ${
                 tier.popular 
                   ? 'border-primary shadow-lg' 
                   : 'border-border'
@@ -103,28 +93,14 @@ const Pricing = () => {
                 </div>
               </div>
 
-              <TooltipProvider>
-                <ul className="space-y-2 mb-6">
-                  {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm">
-                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="flex-1">
-                        {feature}
-                        {feature.includes('*') && tier.tooltip && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <span className="text-primary cursor-help ml-1">*</span>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="max-w-xs">{tier.tooltip}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </TooltipProvider>
+              <ul className="space-y-2 mb-6 flex-1">
+                {tier.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="flex-1">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
               <Button 
                 className="w-full"

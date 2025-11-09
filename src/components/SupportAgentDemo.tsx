@@ -1,50 +1,111 @@
+import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
 const SupportAgentDemo = () => {
-  const codeExample = `# Before Inkog: This agent leaked 10,000 customer records
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const beforeCode = `# ❌ VULNERABLE CODE
 
 class SupportAgent:
     def handle_ticket(self, customer_message):
-        # ❌ PROMPT INJECTION - User controls system prompt
+        # PROMPT INJECTION - User controls prompt
         prompt = f"Help customer: {customer_message}"
         
-        # ❌ HARDCODED KEY - Exposed in logs, Git history
+        # HARDCODED KEY - Exposed in logs
         api_key = "sk-proj-abc123..."
         
-        # ❌ INFINITE LOOP - $12K OpenAI bill in 3 hours
+        # INFINITE LOOP - No max_attempts
         while not resolved:
-            response = llm.complete(prompt)  # No max_attempts!
+            response = llm.complete(prompt)`;
 
-# After Inkog: All issues caught in 3.38ms before deployment`;
+  const afterCode = `# ✅ SECURED BY INKOG
+
+class SupportAgent:
+    def handle_ticket(self, customer_message):
+        # Validated input with sanitization
+        prompt = sanitize_input(customer_message)
+        
+        # Environment variable
+        api_key = os.getenv("OPENAI_API_KEY")
+        
+        # Bounded retry with max attempts
+        for attempt in range(MAX_RETRIES):
+            response = llm.complete(prompt)`;
+
+  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseUp = () => setIsDragging(false);
+  
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percentage = (x / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, percentage)));
+  };
 
   return (
     <section className="py-24 px-4 border-t border-border">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-medium mb-4">
-            Real-World Example: Support Agent
+            Example Use Case: AI Customer Service
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            This agent cost one company 10,000 leaked records and $12K in 3 hours
+            AI support agents can leak thousands of customer records, expose API keys in logs, and generate unexpected costs from infinite loops without proper security scanning
           </p>
         </div>
 
-        <div className="border border-border rounded-lg p-6">
-          <div className="bg-card border border-border rounded p-4 mb-6">
-            <code className="font-mono text-xs text-foreground whitespace-pre leading-relaxed">
-              {codeExample}
-            </code>
+        <div className="space-y-6">
+          {/* Interactive Before/After Slider */}
+          <div 
+            className="relative border border-border rounded-lg overflow-hidden select-none bg-card"
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+          >
+            {/* Before Code */}
+            <div className="p-6">
+              <pre className="font-mono text-xs leading-relaxed text-foreground whitespace-pre-wrap">
+                {beforeCode}
+              </pre>
+            </div>
+
+            {/* After Code Overlay */}
+            <div 
+              className="absolute top-0 left-0 h-full overflow-hidden bg-card"
+              style={{ width: `${sliderPosition}%` }}
+            >
+              <div className="p-6">
+                <pre className="font-mono text-xs leading-relaxed text-foreground whitespace-pre-wrap">
+                  {afterCode}
+                </pre>
+              </div>
+            </div>
+
+            {/* Slider Handle */}
+            <div 
+              className="absolute top-0 bottom-0 w-1 bg-primary cursor-ew-resize"
+              style={{ left: `${sliderPosition}%` }}
+              onMouseDown={handleMouseDown}
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full shadow-lg flex items-center justify-center">
+                <div className="w-1 h-4 bg-primary-foreground rounded"></div>
+              </div>
+            </div>
           </div>
 
+          {/* Impact Metrics */}
           <div className="border border-primary/20 bg-primary/5 rounded-lg p-6">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
                 <h3 className="font-medium mb-2">Detected in 3.38ms</h3>
                 <p className="text-sm text-muted-foreground">
-                  All three vulnerabilities caught before deployment. Zero false positives. 
+                  All three vulnerabilities caught before deployment. Zero false positives.
                   <br />
-                  <span className="font-medium text-foreground">Actual impact prevented:</span> 10,000 customer records protected • $12K API costs avoided • Zero breach response cost
+                  <span className="font-medium text-foreground">Impact prevented:</span> Protected sensitive customer data • Eliminated credential exposure • Prevented runaway API costs
                 </p>
               </div>
             </div>
