@@ -18,31 +18,16 @@ const Hero = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button 
-            variant="outline" 
             size="lg"
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto bg-primary text-black hover:bg-primary/90"
           >
-            View Demo
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            asChild
-            className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-black"
-          >
-            <a 
-              href="https://github.com/inkog-io/inkog" 
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
+            Try Live Demo
           </Button>
           <BookCta 
-            text="Book Call" 
+            text="Book 15-min Call" 
             size="lg"
             variant="outline"
-            className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-black"
+            className="w-full sm:w-auto"
           />
         </div>
 
