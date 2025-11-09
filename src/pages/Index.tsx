@@ -5,6 +5,7 @@ import WhatWeCatch from "@/components/WhatWeCatch";
 import SupportAgentDemo from "@/components/SupportAgentDemo";
 import TechStack from "@/components/TechStack";
 import ComparisonSection from "@/components/ComparisonSection";
+import Pricing from "@/components/Pricing";
 
 const Index = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Index = () => {
         <SupportAgentDemo />
         <TechStack />
         <ComparisonSection />
+        <Pricing />
       
         {/* Footer */}
         <footer className="border-t border-border py-12">

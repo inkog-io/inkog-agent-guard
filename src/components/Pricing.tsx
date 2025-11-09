@@ -1,24 +1,23 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check, X } from "lucide-react";
-
-const comparison = [
-  { feature: "Detection method", inkog: "Static analysis", runtime: "Runtime monitoring" },
-  { feature: "Deployment blocker", inkog: "Yes", runtime: "No" },
-  { feature: "Cost per month", inkog: "$497", runtime: "$5,000+" },
-  { feature: "False positives", inkog: "4%", runtime: "15-20%" },
-];
+import { Check } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const tiers = [
   {
     name: "Open Source",
     price: "Free",
     period: "forever",
-    description: "For public repositories",
+    description: "On-prem only",
     features: [
-      "Unlimited scans",
-      "Core pattern detection",
-      "GitHub integration",
+      "CLI scanner",
+      "All patterns",
+      "GitHub Action",
       "Community support"
     ],
     cta: "Get Started",
@@ -26,35 +25,35 @@ const tiers = [
   },
   {
     name: "Team",
-    price: "$497",
-    period: "/month",
-    description: "For private repositories",
+    price: "$99",
+    period: "/month per production agent",
+    description: "Everything in Open Source",
     features: [
-      "Everything in Open Source",
-      "Private repo scanning",
-      "Advanced patterns (50+)",
+      "1 Agentic Framework Integration*",
+      "SaaS + Admin GUI Available",
       "Priority support",
       "API access",
-      "Custom rules"
+      "90-day history"
     ],
     cta: "Start Free Trial",
-    popular: true
+    popular: true,
+    tooltip: "Agentic Framework Integration to LangChain, CrewAI, AutoGen, etc."
   },
   {
     name: "Enterprise",
     price: "Custom",
     period: "",
-    description: "For organizations at scale",
+    description: "Everything in Team",
     features: [
-      "Everything in Team",
-      "EU AI Act compliance reports",
-      "Dedicated support engineer",
-      "SLA guarantees",
+      "3 Agentic Framework Integrations*",
+      "Custom patterns",
       "On-premise deployment",
-      "Custom integrations"
+      "Support SLA + Success Manager",
+      "Automatic Compliance reports"
     ],
     cta: "Contact Sales",
-    popular: false
+    popular: false,
+    tooltip: "Agentic Framework Integration to LangChain, CrewAI, AutoGen, etc."
   }
 ];
 
@@ -70,44 +69,27 @@ const Pricing = () => {
           className="text-center mb-12"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-3 tracking-tight">
-            10x Cheaper Than Runtime Monitors
+            Pricing
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Catch vulnerabilities before deployment, not after incidents
-          </p>
         </motion.div>
-
-        {/* Comparison Table */}
-        <div className="max-w-3xl mx-auto mb-16">
-          <div className="bg-card border border-border rounded-lg overflow-hidden">
-            <div className="grid grid-cols-3 gap-4 p-4 border-b border-border bg-muted/30">
-              <div className="text-sm font-medium">Feature</div>
-              <div className="text-sm font-medium text-center">Inkog</div>
-              <div className="text-sm font-medium text-center text-muted-foreground">Runtime Monitors</div>
-            </div>
-            {comparison.map((row, index) => (
-              <div key={index} className="grid grid-cols-3 gap-4 p-4 border-b border-border last:border-b-0">
-                <div className="text-sm text-muted-foreground">{row.feature}</div>
-                <div className="text-sm font-medium text-center text-accent">{row.inkog}</div>
-                <div className="text-sm text-center text-muted-foreground">{row.runtime}</div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Pricing Tiers */}
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {tiers.map((tier, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`bg-card rounded-lg p-6 border ${
                 tier.popular 
-                  ? 'border-accent' 
+                  ? 'border-primary shadow-lg' 
                   : 'border-border'
               }`}
             >
               {tier.popular && (
-                <div className="text-xs font-semibold text-accent mb-4">
+                <div className="text-xs font-semibold text-primary mb-4">
                   MOST POPULAR
                 </div>
               )}
@@ -121,14 +103,28 @@ const Pricing = () => {
                 </div>
               </div>
 
-              <ul className="space-y-2 mb-6">
-                {tier.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm">
-                    <Check className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <TooltipProvider>
+                <ul className="space-y-2 mb-6">
+                  {tier.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="flex-1">
+                        {feature}
+                        {feature.includes('*') && tier.tooltip && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <span className="text-primary cursor-help ml-1">*</span>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="max-w-xs">{tier.tooltip}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </TooltipProvider>
 
               <Button 
                 className="w-full"
@@ -136,7 +132,7 @@ const Pricing = () => {
               >
                 {tier.cta}
               </Button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -15,18 +15,11 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg"
-            className="w-full sm:w-auto bg-primary text-black hover:bg-primary/90"
-          >
-            Try Live Demo
-          </Button>
+        {/* CTA Button */}
+        <div className="flex justify-center">
           <BookCta 
-            text="Book 15-min Call" 
+            text="Book 15-min Demo" 
             size="lg"
-            variant="outline"
             className="w-full sm:w-auto"
           />
         </div>
