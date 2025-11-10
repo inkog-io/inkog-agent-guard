@@ -47,8 +47,8 @@ class SupportAgent:
 
   return (
     <section className="py-24 px-4 border-t border-border">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-medium mb-4">
             Example Use Case: AI Customer Service
           </h2>
@@ -57,16 +57,16 @@ class SupportAgent:
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="border border-border rounded-lg overflow-hidden bg-card">
           {/* Interactive Before/After Slider */}
           <div 
-            className="relative border border-border rounded-lg overflow-hidden select-none bg-card"
+            className="relative select-none h-[280px]"
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
             {/* Before Code */}
-            <div className="p-6">
+            <div className="absolute inset-0 p-6 overflow-hidden">
               <pre className="font-mono text-xs leading-relaxed text-foreground whitespace-pre-wrap">
                 {beforeCode}
               </pre>
@@ -86,26 +86,28 @@ class SupportAgent:
 
             {/* Slider Handle */}
             <div 
-              className="absolute top-0 bottom-0 w-1 bg-primary cursor-ew-resize"
+              className="absolute top-0 bottom-0 w-1 bg-primary cursor-ew-resize z-10"
               style={{ left: `${sliderPosition}%` }}
               onMouseDown={handleMouseDown}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-1 h-4 bg-primary-foreground rounded"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-primary rounded-full shadow-lg flex items-center justify-center">
+                <div className="flex gap-0.5">
+                  <div className="w-0.5 h-4 bg-primary-foreground rounded"></div>
+                  <div className="w-0.5 h-4 bg-primary-foreground rounded"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Impact Metrics */}
-          <div className="border border-primary/20 bg-primary/5 rounded-lg p-6">
+          {/* Impact Metrics - Integrated */}
+          <div className="border-t border-primary/20 bg-primary/5 px-6 py-4">
             <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
               <div>
-                <h3 className="font-medium mb-2">Detected in 3.38ms</h3>
+                <p className="text-sm font-medium mb-1">Detected in 3.38ms</p>
                 <p className="text-sm text-muted-foreground">
                   All three vulnerabilities caught before deployment. Zero false positives.
-                  <br />
-                  <span className="font-medium text-foreground">Impact prevented:</span> Protected sensitive customer data • Eliminated credential exposure • Prevented runaway API costs
+                  <span className="block mt-1"><span className="font-medium text-foreground">Impact prevented:</span> Protected sensitive customer data • Eliminated credential exposure • Prevented runaway API costs</span>
                 </p>
               </div>
             </div>

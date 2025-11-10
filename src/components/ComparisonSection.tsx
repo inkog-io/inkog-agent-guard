@@ -26,24 +26,24 @@ const ComparisonSection = () => {
 
   return (
     <section className="py-24 px-4 border-t border-border">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-medium text-center mb-16">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-medium text-center mb-12">
           Why Static Analysis Beats Runtime Monitoring
         </h2>
         
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
+        <div className="bg-card border border-border rounded-lg overflow-hidden shadow-lg">
           {/* Header */}
-          <div className="grid md:grid-cols-2 gap-px bg-border">
-            <div className="bg-card px-6 py-4">
+          <div className="grid grid-cols-2 border-b border-border">
+            <div className="px-6 py-4 bg-primary/5 border-r border-border">
               <div className="flex items-center gap-2">
                 <Check className="w-5 h-5 text-primary" />
-                <h3 className="font-medium">Static Analysis (Inkog)</h3>
+                <h3 className="font-semibold text-primary">Static Analysis (Inkog)</h3>
               </div>
             </div>
-            <div className="bg-card px-6 py-4">
+            <div className="px-6 py-4 bg-destructive/5">
               <div className="flex items-center gap-2">
-                <X className="w-5 h-5 text-muted-foreground" />
-                <h3 className="font-medium text-muted-foreground">Runtime Monitoring</h3>
+                <X className="w-5 h-5 text-destructive" />
+                <h3 className="font-semibold text-destructive">Runtime Monitoring</h3>
               </div>
             </div>
           </div>
@@ -51,12 +51,12 @@ const ComparisonSection = () => {
           {/* Rows */}
           <div className="divide-y divide-border">
             {comparisons.map((comparison, index) => (
-              <div key={index} className="grid md:grid-cols-2 gap-px bg-border">
-                <div className="bg-card px-6 py-4 flex items-center">
-                  <p className="text-sm font-medium">{comparison.static}</p>
+              <div key={index} className="grid grid-cols-2">
+                <div className="px-6 py-4 bg-primary/5 border-r border-border flex items-center">
+                  <p className="text-sm font-medium text-foreground">{comparison.static}</p>
                 </div>
-                <div className="bg-card px-6 py-4 flex items-center">
-                  <p className="text-sm text-muted-foreground">{comparison.runtime}</p>
+                <div className="px-6 py-4 bg-destructive/5 flex items-center">
+                  <p className="text-sm font-medium text-destructive/90">{comparison.runtime}</p>
                 </div>
               </div>
             ))}

@@ -11,19 +11,19 @@ const tiers = [
     features: [
       "CLI scanner",
       "All patterns",
-      "GitHub Action",
-      "Community support"
+      "GitHub Action"
     ],
     cta: "Get Started",
     popular: false
   },
   {
     name: "Team",
-    price: "$99",
-    period: "/month per production agent",
+    price: "Starts at $99",
+    period: "",
     description: "Everything in Open Source",
+    deployment: "SaaS or On-Prem",
     features: [
-      "SaaS + Admin GUI Available",
+      "Admin GUI",
       "Priority support",
       "API access",
       "90-day history"
@@ -36,6 +36,7 @@ const tiers = [
     price: "Custom",
     period: "",
     description: "Everything in Team",
+    deployment: "SaaS or On-Prem",
     features: [
       "Custom patterns",
       "On-premise deployment",
@@ -78,18 +79,23 @@ const Pricing = () => {
                   : 'border-border'
               }`}
             >
-              {tier.popular && (
-                <div className="text-xs font-semibold text-primary mb-4">
-                  MOST POPULAR
-                </div>
-              )}
+              <div className="h-6 mb-4">
+                {tier.popular && (
+                  <div className="text-xs font-semibold text-primary">
+                    MOST POPULAR
+                  </div>
+                )}
+              </div>
 
               <div className="mb-6">
                 <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{tier.description}</p>
-                <div className="flex items-baseline gap-1">
+                <p className="text-sm text-muted-foreground mb-1">{tier.description}</p>
+                {tier.deployment && (
+                  <p className="text-xs text-muted-foreground mb-3">{tier.deployment}</p>
+                )}
+                <div className="flex items-baseline gap-1 mt-4">
                   <span className="text-3xl font-bold">{tier.price}</span>
-                  <span className="text-muted-foreground text-sm">{tier.period}</span>
+                  {tier.period && <span className="text-muted-foreground text-sm">{tier.period}</span>}
                 </div>
               </div>
 
