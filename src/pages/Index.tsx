@@ -51,7 +51,13 @@ const Index = () => {
                   GitHub
                 </a>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Pricing
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   About
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact
                 </a>
               </div>
               

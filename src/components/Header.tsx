@@ -8,9 +8,6 @@ const Header = () => {
           <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
             Docs
           </a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-            Patterns
-          </a>
           <a 
             href="https://github.com/inkog-io/inkog" 
             target="_blank"
@@ -23,7 +20,10 @@ const Header = () => {
             Pricing
           </a>
           <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-            Contact Us
+            About
+          </a>
+          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            Contact
           </a>
         </div>
       </nav>

@@ -21,7 +21,7 @@ const tiers = [
     price: "Starts at $99",
     period: "",
     description: "Everything in Open Source",
-    deployment: "SaaS or On-Prem",
+    deployment: "SaaS or On-prem",
     features: [
       "Admin GUI",
       "API access",
@@ -36,10 +36,9 @@ const tiers = [
     price: "Custom",
     period: "",
     description: "Everything in Team",
-    deployment: "SaaS or On-Prem",
+    deployment: "SaaS or On-prem",
     features: [
       "Custom patterns",
-      "On-premise deployment",
       "Automatic Compliance reports",
       "Support SLA + Success Manager"
     ],
