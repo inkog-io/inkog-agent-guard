@@ -18,11 +18,21 @@ const Index = () => {
       <Header />
       <div className="pt-16">
         <Hero />
-        <WhatWeCatch />
-        <SupportAgentDemo />
-        <TechStack />
-        <ComparisonSection />
-        <Pricing />
+        <div className="py-24">
+          <WhatWeCatch />
+        </div>
+        <div className="py-24">
+          <SupportAgentDemo />
+        </div>
+        <div className="py-24">
+          <TechStack />
+        </div>
+        <div className="py-24">
+          <ComparisonSection />
+        </div>
+        <div className="py-24">
+          <Pricing />
+        </div>
       
         {/* Footer */}
         <footer className="border-t border-border py-12">

@@ -12,7 +12,7 @@ const frameworks = [
 
 const TechStack = () => {
   return (
-    <section className="py-24 px-4 border-t border-border">
+    <section className="px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-medium text-center mb-12">
           Works With Your Stack

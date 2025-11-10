@@ -21,7 +21,7 @@ const patterns = [
 
 const WhatWeCatch = () => {
   return (
-    <section className="py-24 px-4">
+    <section className="px-4">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-medium text-center mb-16">
           <span className="text-primary">Inkog</span> Supports more than 15+ patterns, including:

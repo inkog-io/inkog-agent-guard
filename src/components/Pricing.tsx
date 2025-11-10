@@ -7,7 +7,7 @@ const tiers = [
     name: "Open Source",
     price: "Free",
     period: "forever",
-    description: "On-prem only",
+    deployment: "On-prem only",
     features: [
       "CLI scanner",
       "All patterns",
@@ -24,9 +24,9 @@ const tiers = [
     deployment: "SaaS or On-Prem",
     features: [
       "Admin GUI",
-      "Priority support",
       "API access",
-      "90-day history"
+      "90-day history",
+      "Priority support"
     ],
     cta: "Start Free Trial",
     popular: true
@@ -40,8 +40,8 @@ const tiers = [
     features: [
       "Custom patterns",
       "On-premise deployment",
-      "Support SLA + Success Manager",
-      "Automatic Compliance reports"
+      "Automatic Compliance reports",
+      "Support SLA + Success Manager"
     ],
     cta: "Contact Sales",
     popular: false
@@ -50,7 +50,7 @@ const tiers = [
 
 const Pricing = () => {
   return (
-    <section className="py-20 md:py-32">
+    <section className="px-4">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,14 +89,13 @@ const Pricing = () => {
 
               <div className="mb-6">
                 <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
-                <p className="text-sm text-muted-foreground mb-1">{tier.description}</p>
-                {tier.deployment && (
-                  <p className="text-xs text-muted-foreground mb-3">{tier.deployment}</p>
-                )}
-                <div className="flex items-baseline gap-1 mt-4">
+                <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-3xl font-bold">{tier.price}</span>
                   {tier.period && <span className="text-muted-foreground text-sm">{tier.period}</span>}
                 </div>
+                {tier.description && (
+                  <p className="text-sm text-muted-foreground mb-1">{tier.description}</p>
+                )}
               </div>
 
               <ul className="space-y-2 mb-6 flex-1">
@@ -107,6 +106,10 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
+
+              {tier.deployment && (
+                <p className="text-xs text-muted-foreground mb-4">{tier.deployment}</p>
+              )}
 
               <Button 
                 className="w-full"
