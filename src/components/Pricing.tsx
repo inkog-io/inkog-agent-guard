@@ -18,7 +18,7 @@ const tiers = [
   },
   {
     name: "Team",
-    price: "Starts at €497",
+    price: "€497",
     period: "/ month",
     description: "Everything in Open Source",
     deployment: "SaaS or On-prem",
@@ -87,12 +87,12 @@ const Pricing = () => {
 
               <div className="mb-6">
                 <h3 className="text-lg font-bold mb-2">{tier.name}</h3>
-                <div className="flex items-baseline gap-1">
+                <div className="h-12 flex items-baseline gap-1">
                   <span className="text-3xl font-bold">{tier.price}</span>
                   {tier.period && <span className="text-muted-foreground text-sm">{tier.period}</span>}
                 </div>
                 {tier.description && (
-                  <p className="text-sm text-muted-foreground mt-1">{tier.description}</p>
+                  <p className="text-sm text-muted-foreground">{tier.description}</p>
                 )}
               </div>
 
