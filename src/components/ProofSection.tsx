@@ -3,15 +3,16 @@ import { Check } from "lucide-react";
 const frameworks = [
   "Microsoft Semantic Kernel",
   "LangChain",
+  "LlamaIndex",
   "CrewAI"
 ];
 
 const ProofSection = () => {
   return (
     <section className="px-4">
-      <div className="max-w-4xl mx-auto text-center space-y-12">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
         <h2 className="text-3xl md:text-4xl font-bold">
-          Validated on 350K+ lines of production code
+          Battle-tested on 350K+ Lines of Production Code
         </h2>
         
         <div className="flex flex-wrap justify-center gap-8">
@@ -23,8 +24,8 @@ const ProofSection = () => {
           ))}
         </div>
 
-        <p className="text-xl text-muted-foreground">
-          &lt;15% false positives, 5-second scans
+        <p className="text-lg text-muted-foreground font-medium">
+          Less than 5% false positives guaranteed
         </p>
       </div>
     </section>

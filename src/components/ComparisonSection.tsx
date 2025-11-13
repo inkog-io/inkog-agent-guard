@@ -3,24 +3,20 @@ import { Check, X } from "lucide-react";
 const ComparisonSection = () => {
   const comparisons = [
     {
-      static: "Catches issues in dev",
-      runtime: "Alerts after damage",
-      staticWins: true,
+      static: "Find bugs in dev",
+      runtime: "Alert after damage",
     },
     {
       static: "$0 prevented cost",
-      runtime: "$4.88M average incident",
-      staticWins: true,
+      runtime: "$4.88M average breach",
     },
     {
       static: "5-second scan",
       runtime: "241 days to detect",
-      staticWins: true,
     },
     {
       static: "Fix before commit",
       runtime: "Emergency response",
-      staticWins: true,
     },
   ];
 
