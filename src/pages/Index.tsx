@@ -42,17 +42,6 @@ const Index = () => {
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   Docs
                 </a>
-                <a 
-                  href="https://github.com/inkog-io/inkog" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  GitHub
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Pricing
-                </a>
                 <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                   About
                 </a>
