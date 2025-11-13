@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import WhatWeCatch from "@/components/WhatWeCatch";
-import SupportAgentDemo from "@/components/SupportAgentDemo";
-import TechStack from "@/components/TechStack";
-import ComparisonSection from "@/components/ComparisonSection";
+import ProofSection from "@/components/ProofSection";
 import Pricing from "@/components/Pricing";
 
 const Index = () => {
@@ -18,19 +16,13 @@ const Index = () => {
       <Header />
       <div className="pt-16">
         <Hero />
-        <div className="py-24">
+        <div className="py-32">
           <WhatWeCatch />
         </div>
-        <div className="py-24">
-          <SupportAgentDemo />
+        <div className="py-32">
+          <ProofSection />
         </div>
-        <div className="py-24">
-          <TechStack />
-        </div>
-        <div className="py-24">
-          <ComparisonSection />
-        </div>
-        <div className="py-24">
+        <div className="py-32">
           <Pricing />
         </div>
       
