@@ -25,7 +25,6 @@ const tiers = [
     features: [
       "Admin GUI",
       "API access",
-      "90-day history",
       "Priority support"
     ],
     cta: "Start Free Trial",
