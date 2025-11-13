@@ -8,10 +8,13 @@ const Hero = () => {
         {/* Headline */}
         <div className="space-y-6">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            Find AI agent bugs before they cause problems
+            Static Analysis for AI Agents
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Static analysis that catches issues
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+            Catch prompt injection, infinite loops, and data leaks before production
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+            15+ vulnerability patterns. Zero false positives. 5-second scan.
           </p>
         </div>
 
